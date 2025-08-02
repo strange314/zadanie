@@ -1,0 +1,58 @@
+{
+    "info": {
+      "name": "JWT API Collection",
+      "_postman_id": "a8d8eebc-7a30-4a24-b27d-9d0aaef03b1a",
+      "description": "Коллекция для тестирования Django API с JWT",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Получить JWT токен",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"yourpassword\"\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/token/",
+            "protocol": "http",
+            "host": ["127.0.0.1"],
+            "port": "8000",
+            "path": ["api", "token", ""]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Доступ к защищённым данным",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{access_token}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/protected-data/",
+            "protocol": "http",
+            "host": ["127.0.0.1"],
+            "port": "8000",
+            "path": ["api", "protected-data", ""]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
